@@ -1,0 +1,19 @@
+<mvc:View
+	displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	controllerName="opensap.myapp.controller.App">
+	<Carousel>
+		<pages>
+			<Image  
+				src= "https://openui5.org/images/OpenUI5_new_big_side.png" 
+				height= "200px"/>
+			<Image  
+				src= "https://openui5.org/images/OpenUI5_new_big_side.png" 
+				height= "300px"/>
+		</pages>
+	</Carousel>
+	<Button 
+		text="Say Hello" 
+		press="onShowHello"/>
+</mvc:View>
