@@ -39,8 +39,8 @@ sap.ui.define([
 			oBinding.filter(aFilter);
 		},
 		
-		onTimeSelected :function(oEvent){
-			var oSelectedItem = oEvent.getParameter();
+		onItemSelected :function(oEvent){
+			var oSelectedItem = oEvent.getParameter("listItem");
 			var oContext = oSelectedItem.getBindingContext();
 			var sPath = oContext.getPath();
 			var oPanel = this.byId("productDetailsPanel");

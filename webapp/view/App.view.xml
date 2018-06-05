@@ -87,7 +87,7 @@
 										growing="true"
 										growingThreshold="5"
 										growingScrollToLoad="false"
-										mode="SingleSelectedMaster"
+										mode="SingleSelectMaster"
 										selectionChange="onItemSelected">
 										<headerToolbar>
 											<Toolbar>
@@ -126,15 +126,15 @@
 									</List>
 									<Panel	
 										id="productDetailsPanel"
-										headerText="Product Details"
-										visible="false"/>
+										headerText="{i18n>productDetailPanelHeader}"
+										visible="false" >
 										<l:Grid >
-											<Text text="ProductId" />
-											<Text text="{i18n>productDetailPanelID}: {ProductID}"/>
-											<Text text="{i18n>productDetailPanelName}: {Name}"/>
-											<Text text="{i18n>productDetailPanelDescription}:\n {Description}"/>
-											<Text text="{i18n>productDetailPanelPrice}: {Price}"/>
+												<Text text="{i18n>productDetailPanelID}: {ProductID}"/>
+												<Text text="{i18n>productDetailPanelName}: {Name}"/>
+												<Text text="{i18n>productDetailPanelDescription}: {Description}"/>
+												<Text text="{i18n>productDetailPanelPrice}: {Price}"/>
 										</l:Grid>
+									</Panel>
 								</content>
 							</IconTabFilter>
 						</items>
