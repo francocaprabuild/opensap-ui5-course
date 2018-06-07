@@ -81,8 +81,14 @@
 									<List 
 										id="productsList" 
 										items="{
-											path: '/ProductSet',
-											sorter: { path: 'Category' , group: true }
+											path : '/ProductSet',
+											sorter : { 
+												path : 'Category' , 
+												group : true 
+											},
+											parameters : {
+												expand : 'ToSupplier'
+											}
 										}"
 										growing="true"
 										growingThreshold="5"
@@ -93,34 +99,47 @@
 											<Toolbar>
 												<Title text="{i18n>productListTitle}"/>
 												<ToolbarSpacer/>
-												<SearchField width="50%" search="onFilterProducts"/>
+												<SearchField 
+													width="50%" 
+													search="onFilterProducts"
+													selectOnFocus="false"/>
 											</Toolbar>
 										</headerToolbar>
 										<items>
 											<ObjectListItem
 												title="{Name}"
 												number="{
-													parts: [
-														{path: 'Price'},
-														{path: 'CurrencyCode'}
+													parts : [
+														{path : 'Price'},
+														{path : 'CurrencyCode'}
 													],
-													type: 'sap.ui.model.type.Currency',
-													formatOptions: {
-														showMeasure: false
+													type : 'sap.ui.model.type.Currency',
+													formatOptions : {
+														showMeasure : false
 													}
 												}"
 												numberUnit="{CurrencyCode}"
 												numberState="{= ${Price} > 500 ? 'Error' : 'Success'}"
-												intro="{ProductID}">
+												intro="{ProductID}"	
+												press="onItemSelected"
+												type="Active">
 												<firstStatus>
-													<ObjectStatus text="{
-														parts: [
-															{path: 'WeightUnit'},
-															{path: 'WeightMeasure'}
-														],
-														formatter: '.formatter.delivery'
-													}"/>
+													<ObjectStatus 
+														text="{
+															parts: [
+																{path: 'WeightUnit'},
+																{path: 'WeightMeasure'}
+															],
+															formatter: '.formatter.delivery'
+														}"
+													/>
 												</firstStatus>
+												<secondStatus>
+													<ObjectStatus
+														title="{i18n>statusDeliveryFrom}" 
+														text="{ToSupplier/Address/City}"
+													/>
+												</secondStatus> 
 											</ObjectListItem>	
 										</items>
 									</List>
@@ -128,7 +147,7 @@
 										id="productDetailsPanel"
 										headerText="{i18n>productDetailPanelHeader}"
 										visible="false" >
-										<l:Grid >
+										<l:Grid defaultSpan="L3 M6 S12">
 												<Text text="{i18n>productDetailPanelID}: {ProductID}"/>
 												<Text text="{i18n>productDetailPanelName}: {Name}"/>
 												<Text text="{i18n>productDetailPanelDescription}: {Description}"/>
